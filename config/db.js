@@ -6,7 +6,7 @@ const pool = new Pool({
   password: process.env.db_password,
   host: "localhost",
   port: 5432,
-  database: "practice",
+  database: "authdb",
 });
 
 module.exports = {

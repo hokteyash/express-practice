@@ -1,21 +1,19 @@
-const express = require('express')
+const express = require("express");
 
-require('dotenv').config()
+require("dotenv").config();
 
-const app = express()
+const app = express();
 
 app.use(express.json());
 
-const helloWorldRoute = require("./routes/helloWorld")
-const userRoutes = require("./routes/usersRoute");
-const createUsersTable = require('./config/dbInit')
+const authRoutes = require("./routes/authRoutes");
+const createUsersTable = require("./config/dbInit");
 
 // initializes DB tables
 createUsersTable();
 
 const PORT = process.env.PORT;
 
-app.use("/api/helloWorld",helloWorldRoute)
-app.use("/api/users",userRoutes)
+app.use("/api/auth", authRoutes);
 
 app.listen(PORT, () => console.log(`Server started listening on PORT ${PORT}`));
